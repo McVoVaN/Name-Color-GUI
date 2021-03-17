@@ -9,6 +9,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import nijabutter.commands.color;
 import nijabutter.listeners.Join;
+import nijabutter.commands.utils.Utils;
 
 public class NameColor extends JavaPlugin implements Listener{
 	
@@ -27,6 +28,10 @@ public class NameColor extends JavaPlugin implements Listener{
 		new Join(this);
 	}
 	
-	
+	    @EventHandler
+    public void onChat(AsyncPlayerChatEvent event){
+        String msg = Utils.chat(event.getMessage());
+        event.setMessage(msg);
+    }
 	
 }
